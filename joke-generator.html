@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <link rel="stylesheet" href="css/joke-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="joke-container">
+        <!-- Header -->
+        <header class="joke-header">
+            <h1><i class="fas fa-laugh"></i> Joke Generator</h1>
+            <p>Laugh out loud with random jokes from around the world!</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="joke-main">
+            <!-- Joke Card -->
+            <div class="joke-card">
+                <div class="joke-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Loading joke...</p>
+                </div>
+
+                <div id="joke-content" class="joke-content hidden">
+                    <div id="joke-text" class="joke-text"></div>
+                    <div id="joke-punchline" class="joke-punchline hidden"></div>
+                    <div class="joke-meta">
+                        <span id="joke-type" class="joke-type"></span>
+                        <span id="joke-id" class="joke-id"></span>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-message hidden"></div>
+
+                <!-- Controls -->
+                <div class="joke-controls">
+                    <button id="get-joke-btn" class="btn btn-primary">
+                        <i class="fas fa-dice"></i> Get a Joke
+                    </button>
+                    <button id="reveal-btn" class="btn btn-secondary hidden">
+                        <i class="fas fa-lightbulb"></i> Reveal Punchline
+                    </button>
+                    <button id="copy-btn" class="btn btn-secondary hidden" title="Copy joke to clipboard">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button id="share-btn" class="btn btn-secondary hidden" title="Share joke">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+
+                <!-- Joke Type Filter -->
+                <div class="joke-filters">
+                    <label for="joke-type-select">Select Type:</label>
+                    <select id="joke-type-select">
+                        <option value="any">Any Type</option>
+                        <option value="general">General</option>
+                        <option value="programming">Programming</option>
+                        <option value="knock-knock">Knock-Knock</option>
+                    </select>
+                </div>
+
+                <!-- Category Selection -->
+                <div class="joke-categories">
+                    <label>Select Category:</label>
+                    <div class="category-buttons">
+                        <button class="category-btn active" data-category="any">
+                            <i class="fas fa-star"></i> All
+                        </button>
+                        <button class="category-btn" data-category="general">
+                            <i class="fas fa-laugh"></i> General
+                        </button>
+                        <button class="category-btn" data-category="programming">
+                            <i class="fas fa-code"></i> Programming
+                        </button>
+                        <button class="category-btn" data-category="knock-knock">
+                            <i class="fas fa-door-open"></i> Knock-Knock
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-cube"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Jokes</p>
+                        <p id="total-jokes" class="stat-value">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-face-grin-hearts"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Favorites</p>
+                        <p id="favorite-count" class="stat-value">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-hourglass"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Session Time</p>
+                        <p id="session-time" class="stat-value">0s</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div class="history-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Recent Jokes</h2>
+                    <button id="clear-history-btn" class="btn-clear">Clear History</button>
+                </div>
+                <ul id="history-list" class="history-list">
+                    <li class="empty-state"><i class="fas fa-folder-open"></i> No jokes yet. Get started!</li>
+                </ul>
+            </div>
+
+            <!-- Favorites Section -->
+            <div class="favorites-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-heart"></i> Favorite Jokes</h2>
+                    <button id="clear-favorites-btn" class="btn-clear">Clear Favorites</button>
+                </div>
+                <ul id="favorites-list" class="favorites-list">
+                    <li class="empty-state"><i class="fas fa-heart-broken"></i> No favorites yet!</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="joke-footer">
+            <p>Powered by <a href="https://jokeapi.dev" target="_blank">JokeAPI</a></p>
+            <p><small>© 2024 Joke Generator. All jokes are for entertainment purposes.</small></p>
+        </footer>
+    </div>
+
+    <script src="js/joke-generator.js"></script>
+</body>
+</html>
